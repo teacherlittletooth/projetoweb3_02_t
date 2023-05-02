@@ -40,8 +40,9 @@ public class User {
     //toString - Representação genérica do objeto
     @Override
     public String toString() {
-        return "Nome: " + this.userName + "<br>Email: "
-                + this.userEmail;
+        return "Nome: " + this.userName +
+                "<br>Email: "  + this.userEmail +
+                "<br>Senha: " + this.userPass;
     }
     
     //Métodos gerais
