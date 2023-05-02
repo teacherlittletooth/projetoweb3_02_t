@@ -1,4 +1,4 @@
-# projeto web3 (Turma Assis Brasil - manhã)
+# projeto web3 (Turma Assis Brasil - tarde)
 
 Projeto para a disciplina de Web III do curso técnico em informática da escola QI.
 
