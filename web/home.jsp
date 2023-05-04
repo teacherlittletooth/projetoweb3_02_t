@@ -18,7 +18,13 @@
         <title>Transporte</title>
     </head>
     <body>
-        <button type="button" onclick="window.location.href='session/logout.jsp'">Logout</button>
-        <h1> Bem vindo <%= userSession %> </h1>
+        <p>
+            Bem vindo <%= userSession.getUserName()  %>!
+            <button type="button" onclick="window.location.href='session/logout.jsp'">Logout</button>
+        </p>
+        <main>
+            <button onclick="window.location.href='cadastro.jsp'">Cadastrar</button>
+            <button onclick="window.location.href='lista.jsp'">Listar</button>
+        </main>
     </body>
 </html>
