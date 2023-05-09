@@ -20,6 +20,13 @@ public class TransporteDAO {
             //Objeto para preparar o envio da query ao banco de dados
             try {
                 PreparedStatement prep = conn.prepareStatement(sql);
+                prep.setString(1, transp.getTipo());
+                prep.setInt(2, transp.getAssentos());
+                prep.setString(3,  transp.getCombustivel());
+                
+                prep.execute();
+                prep.close();
+                
             } catch (SQLException erro) {
                 System.out.println("Erro ao inserir..." + erro);
             }

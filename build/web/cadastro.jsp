@@ -15,7 +15,7 @@
         <h1>Cadastrar</h1>
         <hr>
         <h2>Novo meio de transporte</h2>
-        <form action="#" method="post">
+        <form action="TransporteController" method="post">
             <input type="text" name="tipo" placeholder="Tipo de transporte" required>
             <br><br>
             
