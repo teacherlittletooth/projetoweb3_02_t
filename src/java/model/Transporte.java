@@ -6,6 +6,8 @@ public class Transporte {
         private int assentos;
         private String combustivel;
 
+    public Transporte(){}    
+        
     public Transporte(String tipo, int assentos, String combustivel) {
         this.tipo = tipo;
         this.assentos = assentos;
