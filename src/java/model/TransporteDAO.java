@@ -34,6 +34,7 @@ public class TransporteDAO {
             }
         }//Fim do método inserir
         
+        
         public ArrayList<Transporte> listTransporte() throws SQLException{
             ArrayList<Transporte> list = new ArrayList<>();
             
@@ -54,6 +55,54 @@ public class TransporteDAO {
             }
             
             return list;
+        }
+        
+        
+        public void deleteTransporte(int id) throws SQLException {
+            String query = "DELETE FROM transportes WHERE "
+                    + "cod_transporte = " + id;
+            
+            PreparedStatement prep = conn.prepareStatement(query);
+            
+            prep.execute();
+            prep.close();
+        }
+        
+        
+        public Transporte listOneTransporte(int id) throws SQLException {
+            String query = "SELECT * FROM transportes WHERE "
+                    + "cod_transporte = " + id;
+            
+            PreparedStatement prep = conn.prepareStatement(query);
+            ResultSet result = prep.executeQuery();
+            
+            Transporte tr = new Transporte();
+            
+            if(result.next()){
+                tr.setCodTransporte(result.getInt("cod_transporte"));
+                tr.setTipo(result.getString("tipo"));
+                tr.setAssentos(result.getInt("assentos"));
+                tr.setCombustivel(result.getString("combustivel"));
+            }
+            
+            return tr;
+        }
+        
+        
+        public void updateTransporte(Transporte t) throws SQLException {
+            String sql = "UPDATE transportes SET tipo = ?,"
+                    + "assentos = ?, combustivel = ?"
+                    + "WHERE cod_transporte = ?";
+            
+            PreparedStatement prep = conn.prepareStatement(sql);
+            
+            prep.setString(1, t.getTipo());
+            prep.setInt(2, t.getAssentos());
+            prep.setString(3, t.getCombustivel());
+            prep.setInt(4, t.getCodTransporte());
+            
+            prep.execute();
+            prep.close();
         }
         
 }//Fim da classe

@@ -35,10 +35,10 @@
                     <td><%= item.getAssentos()%></td>
                     <td><%= item.getCombustivel()%></td>
                     <td>
-                        <a href="#edit<%= item.getCodTransporte() %>">✏</a>
+                        <a href="UpdateTransporte?cod=<%= item.getCodTransporte() %>">✏</a>
                     </td>
                     <td>
-                        <a href="#delete<%= item.getCodTransporte() %>">🗑</a>
+                        <a onclick="confirmaDelete(<%= item.getCodTransporte() %>)">🗑</a>
                     </td>
                 </tr>
               <%
@@ -51,5 +51,15 @@
         
         <br><hr>
         <a href="home.jsp">Página inicial</a>
+        
+        <script>
+                function confirmaDelete(cod) {
+                    if(confirm("Deseja realmente excluir?")) {
+                       window.location.replace("DeleteTransporte?cod=" + cod); 
+                    } else {
+                       alert("Exclusão cancelada!");
+                    }
+                }
+           </script>
     </body>
 </html>
