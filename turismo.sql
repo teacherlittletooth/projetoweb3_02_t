@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 09-Maio-2023 às 21:51
+-- Tempo de geração: 18-Maio-2023 às 22:16
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -23,7 +23,6 @@ SET time_zone = "+00:00";
 
 CREATE DATABASE turismo;
 USE turismo;
-
 -- --------------------------------------------------------
 
 --
@@ -43,13 +42,15 @@ CREATE TABLE `transportes` (
 
 INSERT INTO `transportes` (`cod_transporte`, `tipo`, `assentos`, `combustivel`) VALUES
 (1, 'Ônibus', 45, 'Diesel'),
-(2, 'Van', 30, 'Flex'),
+(2, 'Kombi', 13, 'Flex'),
 (3, 'Avião', 100, 'Gasolina'),
-(4, 'Carroça', 1, 'Cavalo'),
-(5, 'Moto', 2, 'Flex'),
-(6, 'Carro', 5, 'Flex'),
-(7, 'Skate', 1, 'Diesel'),
-(8, 'BalÃ£o', 4, 'GNV');
+(4, 'Carroza', 1, 'Cavalo'),
+(5, 'Motocicleta', 2, 'Gasolina'),
+(6, 'Jeep', 6, 'Diesel'),
+(1004, 'Skate', 1, 'Pasto'),
+(1005, 'Patinete', 2, 'Diesel'),
+(1006, 'Carrinho de rolima', 1, 'Diesel'),
+(9999, 'asdfasdf', 12, 'Gasolina');
 
 -- --------------------------------------------------------
 
@@ -78,6 +79,26 @@ INSERT INTO `transportes_viagens` (`cod_transporte_viagem`, `cod_transporte`, `c
 (8, 1, 4),
 (9, 5, 4),
 (10, 6, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `cod_usuario` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `senha` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`cod_usuario`, `nome`, `senha`) VALUES
+(1, 'Jerson Gesus', 'senha'),
+(2, 'Tiririca', 'florentina');
 
 -- --------------------------------------------------------
 
@@ -123,6 +144,12 @@ ALTER TABLE `transportes_viagens`
   ADD KEY `cod_viagem` (`cod_viagem`);
 
 --
+-- Índices para tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`cod_usuario`);
+
+--
 -- Índices para tabela `viagens`
 --
 ALTER TABLE `viagens`
@@ -136,13 +163,19 @@ ALTER TABLE `viagens`
 -- AUTO_INCREMENT de tabela `transportes`
 --
 ALTER TABLE `transportes`
-  MODIFY `cod_transporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cod_transporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10000;
 
 --
 -- AUTO_INCREMENT de tabela `transportes_viagens`
 --
 ALTER TABLE `transportes_viagens`
   MODIFY `cod_transporte_viagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `viagens`

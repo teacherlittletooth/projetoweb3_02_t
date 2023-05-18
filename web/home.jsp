@@ -16,6 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Transporte</title>
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
         <p>
