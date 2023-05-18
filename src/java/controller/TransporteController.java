@@ -13,6 +13,7 @@ import model.TransporteDAO;
 
 @WebServlet(name = "TransporteController", urlPatterns = {"/TransporteController"})
 public class TransporteController extends HttpServlet {
+    private int cod;
     private String tipo;
     private int assentos;
     private String combustivel;
@@ -21,18 +22,39 @@ public class TransporteController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        //Verificar se o código está sendo enviado
+        if(request.getParameter("cod") != null) {
+            this.cod = Integer.parseInt(request.getParameter("cod"));
+        }
+        
         //Recebendo dados do formulário de cadastro
         this.tipo = request.getParameter("tipo");
         this.assentos = Integer.parseInt(request.getParameter("assentos"));
         this.combustivel = request.getParameter("combustivel");
         
-        Transporte tr = new Transporte(this.tipo, this.assentos, this.combustivel);
-        
         try {
-            
-            TransporteDAO transpDAO = new TransporteDAO();
-            transpDAO.insertTransporte(tr);
-            response.sendRedirect("home.jsp");
+            if(request.getParameter("cod") == null) {
+                Transporte tr = new Transporte(
+                        this.tipo, 
+                        this.assentos, 
+                        this.combustivel
+                );
+
+                TransporteDAO transpDAO = new TransporteDAO();
+                transpDAO.insertTransporte(tr);
+                response.sendRedirect("lista.jsp");
+            } else {
+                Transporte tr = new Transporte(
+                        this.cod,
+                        this.tipo, 
+                        this.assentos, 
+                        this.combustivel
+                );
+
+                TransporteDAO transpDAO = new TransporteDAO();
+                transpDAO.updateTransporte(tr);
+                response.sendRedirect("lista.jsp");
+            }
             
         } catch(SQLException | ClassNotFoundException erro) {
         

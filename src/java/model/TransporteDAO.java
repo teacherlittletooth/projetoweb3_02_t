@@ -35,6 +35,7 @@ public class TransporteDAO {
         }//Fim do método inserir
         
         
+        //Método para listar todos os registros
         public ArrayList<Transporte> listTransporte() throws SQLException{
             ArrayList<Transporte> list = new ArrayList<>();
             
@@ -58,6 +59,7 @@ public class TransporteDAO {
         }
         
         
+        //Método para excluir
         public void deleteTransporte(int id) throws SQLException {
             String query = "DELETE FROM transportes WHERE "
                     + "cod_transporte = " + id;
@@ -69,6 +71,7 @@ public class TransporteDAO {
         }
         
         
+        //Método para listar pelo ID (um registro)
         public Transporte listOneTransporte(int id) throws SQLException {
             String query = "SELECT * FROM transportes WHERE "
                     + "cod_transporte = " + id;
@@ -89,6 +92,7 @@ public class TransporteDAO {
         }
         
         
+        //Método para atualizar um registro
         public void updateTransporte(Transporte t) throws SQLException {
             String sql = "UPDATE transportes SET tipo = ?,"
                     + "assentos = ?, combustivel = ?"

@@ -21,7 +21,7 @@
         <h1>Editar</h1>
         <hr>
         
-        <form action="TransporteController" method="post">
+        <form action="TransporteController" method="post" id="form">
             <input type="text" name="cod" value="<%= tr.getCodTransporte() %>" readonly>
             <br><br>
             
@@ -42,10 +42,24 @@
             
             <br><br>
             <input type="submit" value="Atualizar">
+            <input type="reset" value="Restaurar">
             
         </form>
         
         <br><hr>
         <a href="home.jsp">Página inicial</a>
+        
+        <script>
+                var form = document.getElementById("form");
+                
+                form.addEventListener("submit", function(e){
+                    if(!confirm("Deseja realmente atualizar?")) {
+                        e.preventDefault();
+                        alert("Atualização cancelada!");
+                        window.location.href="lista.jsp";
+                    }
+                });
+           </script>
+        
     </body>
 </html>

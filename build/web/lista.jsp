@@ -38,7 +38,7 @@
                         <a href="UpdateTransporte?cod=<%= item.getCodTransporte() %>">✏</a>
                     </td>
                     <td>
-                        <a onclick="confirmaDelete(<%= item.getCodTransporte() %>)">🗑</a>
+                        <a onclick="confirmaDelete(<%= item.getCodTransporte() %>, '<%= item.getTipo()%>')">🗑</a>
                     </td>
                 </tr>
               <%
@@ -53,8 +53,8 @@
         <a href="home.jsp">Página inicial</a>
         
         <script>
-                function confirmaDelete(cod) {
-                    if(confirm("Deseja realmente excluir?")) {
+                function confirmaDelete(cod, tipo) {
+                    if(confirm("Deseja realmente excluir " + tipo + "?")) {
                        window.location.replace("DeleteTransporte?cod=" + cod); 
                     } else {
                        alert("Exclusão cancelada!");
